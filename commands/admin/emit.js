@@ -2,6 +2,7 @@ const { MessageEmbed } = require('discord.js')
 
 module.exports = {
   name: 'emit',
+  permissions: ['ADMINISTRATOR'],
   description: 'Emettre un événement au choix',
   run: (client, message, args) => {
     if(!args[0] || !args[0].match(/^(guildMemberAdd|guildMemberRemove)$/)) return message.reply("Merci d'entrer un événement valide (\`guildMemberAdd\`/\`guildMemberRemove\`)")
@@ -32,7 +33,7 @@ module.exports = {
       ]
     }
   ],
-  runInteraction: (client, interaction) => {
+  runInteraction(client, interaction) {
     const evtChoices = interaction.options.getString('event')
 
     if (evtChoices == 'guildMemberAdd') {

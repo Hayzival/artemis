@@ -2,6 +2,7 @@ const { MessageEmbed } = require('discord.js')
 
 module.exports = {
   name: 'ping',
+  permissions: ['BAN_MEMBERS', 'KICK_MEMBERS'],
   description: 'Commande ping',
   async run(client, message, args) {
     const tryPong = await message.channel.send("On essaye de pong... un instant !")
@@ -32,4 +33,4 @@ module.exports = {
         
     interaction.editReply({ content: ' ', embeds: [embed]})
   }
-}
+};
