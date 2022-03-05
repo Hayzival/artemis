@@ -32,15 +32,15 @@ module.exports = {
       ]
     }
   ],
-  runSlash: (client, interaction) => {
+  runInteraction: (client, interaction) => {
     const evtChoices = interaction.options.getString('event')
 
     if (evtChoices == 'guildMemberAdd') {
       client.emit('guildMemberAdd', interaction.member);
-      interaction.reply({ content: 'Event guildMemberAdd émit', ephemereal: true})
+      interaction.reply({ content: 'Event guildMemberAdd émit', ephemeral: true})
     } else {
       client.emit('guildMemberRemove', interaction.member);
-      interaction.reply({ content: 'Event guildMemberRemove émit', ephemereal: true})
+      interaction.reply({ content: 'Event guildMemberRemove émit', ephemeral: true})
     }
   }
 }
