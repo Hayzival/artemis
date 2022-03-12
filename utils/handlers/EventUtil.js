@@ -1,13 +1,17 @@
 const { promisify } = require('util');
 const { glob } = require('glob')
 const pGlob = promisify(glob)
+const Logger = require('../Logger')
 
 module.exports = async (client) => {
   (await pGlob(`${process.cwd()}/events/*/*.js`)).map(async eventFile => {
     const event = require(eventFile);
 
-    if (!eventList.includes(event.name) || !event.name) {
-      return console.log(`-----\nEvenement non-déclenché: erreur de typo (ou pas de nom)\nFichier -> ${eventFile}\n-----`)
+    if (!event.name) return Logger.warn(`Evenement non-déclenché: pas de nom ↓\nFichier -> ${eventFile}`)
+
+
+    if (!eventList.includes(event.name)) {
+      return Logger.typo(`Evenement non-déclenché: erreur de typo ↓\nFichier -> ${eventFile}`)
     }
 
     if (event.once) {
@@ -16,7 +20,7 @@ module.exports = async (client) => {
       client.on(event.name, (...args) => event.execute(client, ...args))
     }
 
-    console.log(`Evenement chargé: ${event.name}`)
+    Logger.event(`- Evenement chargé: ${event.name}`)
   })
 }
 
