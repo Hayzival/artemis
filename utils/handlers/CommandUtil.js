@@ -15,6 +15,14 @@ module.exports = async (client) => {
 
     if (!cmd.permissions) return Logger.warn(`Command non-chargée: pas de permission ↓\nFichier -> ${cmdFile}`);
 
+    if (cmd.ownerOnly == undefined) return Logger.warn(`Command non-chargée: il faut indiquer si la commande est ownerOnly ou pas ↓\nFichier -> ${cmdFile}`);
+
+    if (!cmd.usage) return Logger.warn(`Command non-chargée: pas d'usage ↓\nFichier -> ${cmdFile}`);
+
+    if (!cmd.examples) return Logger.warn(`Command non-chargée: pas d'exemples ↓\nFichier -> ${cmdFile}`);
+
+    
+
     cmd.permissions.forEach(permission => {
       if (!permissionList.includes(permission)) {
         return Logger.typo(`Commande non-chargée: erreur de typo sur la permission '${permission}' ↓\nFichier -> ${cmdFile}`)

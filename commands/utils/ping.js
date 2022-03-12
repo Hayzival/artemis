@@ -3,8 +3,11 @@ const { MessageEmbed } = require('discord.js')
 module.exports = {
   name: 'ping',
   category: 'utils',
-  permissions: ['BAN_MEMBERS', 'KICK_MEMBERS'],
-  description: 'Commande ping',
+  permissions: ['SEND_MESSAGES'],
+  ownerOnly: false,
+  usage: 'ping',
+  examples: ['ping'],
+  description: 'La commande ping renvoie la latence du bot et de l\'API',
   async run(client, message, args) {
     const tryPong = await message.channel.send("On essaye de pong... un instant !")
     const embed = new MessageEmbed()
