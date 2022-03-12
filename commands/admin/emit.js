@@ -2,6 +2,7 @@ const { MessageEmbed } = require('discord.js')
 
 module.exports = {
   name: 'emit',
+  category: 'admin',
   permissions: ['ADMINISTRATOR'],
   description: 'Emettre un événement au choix',
   run: (client, message, args) => {

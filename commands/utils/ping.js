@@ -2,6 +2,7 @@ const { MessageEmbed } = require('discord.js')
 
 module.exports = {
   name: 'ping',
+  category: 'utils',
   permissions: ['BAN_MEMBERS', 'KICK_MEMBERS'],
   description: 'Commande ping',
   async run(client, message, args) {
